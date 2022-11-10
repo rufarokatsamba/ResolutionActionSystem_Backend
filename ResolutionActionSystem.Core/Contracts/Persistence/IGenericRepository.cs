@@ -10,7 +10,6 @@ namespace ResolutionActionSystem.Application.Contracts.Persistence
     {
         Task<T> GetAsync(int id);
         Task<IReadOnlyList<T>> GetAllAsync();
-        Task<IEnumerable<T>> FindByIdAsync(int id);
         Task UpdateAsync(T entity);
         Task DeleteByIdAsync(int id);
         Task<T> Add(T entity);

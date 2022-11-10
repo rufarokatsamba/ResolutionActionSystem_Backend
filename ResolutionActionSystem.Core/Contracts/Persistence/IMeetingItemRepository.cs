@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace ResolutionActionSystem.Application.Contracts.Persistence
 {
-    public interface IMeetingRepository: IGenericRepository<Meeting>
+    public interface IMeetingItemRepository: IGenericRepository<MeetingItem>
     {
-
     }
 }
