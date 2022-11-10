@@ -4,6 +4,7 @@ namespace ResolutionActionSystem.Domain.Entities
 {
     public class MeetingType: BaseDomainEntity
     {
-        public List<ItemStatus> ItemStatus { get; set; }
+        public string? Description { get; set; }
+        public List<Meeting> Meeting { get; set; }
     }
 }

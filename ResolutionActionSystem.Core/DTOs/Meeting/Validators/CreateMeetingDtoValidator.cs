@@ -7,7 +7,7 @@ namespace ResolutionActionSystem.Application.DTOs.Meeting.Validators
     {
         public CreateMeetingDtoValidator()
         {
-            RuleFor(c => c.Description)
+            RuleFor(c => c.MeetingTypeId)
                 .NotEmpty().WithMessage("Meeting type is required.")
                 .NotNull();
             RuleFor(c => c.MeetingDateAndTime)

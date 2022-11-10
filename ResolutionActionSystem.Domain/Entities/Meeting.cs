@@ -9,7 +9,7 @@ namespace ResolutionActionSystem.Domain.Entities
 {
     public class Meeting: BaseDomainEntity
     {
-        public string? Description { get; set; }
+        public string? Identifier { get; set; }
         public DateTime MeetingDateAndTime { get; set; }
 
         public MeetingType MeetingType { get; set; }

@@ -20,7 +20,7 @@ namespace ResolutionActionSystem.Persistence.Repositories
         public async Task<List<Meeting>> GetMeetingsWithDetail()
         {
             var meetings = await _dbContext.Meetings
-               .Include(q => q.Id)
+               .Include(q => q.MeetingItems)
                .ToListAsync();
 
             return meetings;
