@@ -6,6 +6,7 @@ namespace ResolutionActionSystem.Application.DTOs.Meeting
     public interface IMeetingDto
     {
         public string? Description { get; set; }
+        public DateTime MeetingDateAndTime { get; set; }
         public MeetingTypeDto MeetingType { get; set; }
         public int MeetingTypeId { get; set; }
         public List<MeetingItemDto> MeetingItems { get; set; }
