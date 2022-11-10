@@ -15,7 +15,7 @@ namespace ResolutionActionSystem.Persistence.Repositories
         public async Task<List<MeetingItem>> GetMeetingItemsWithDetail()
         {
             var meetingItems = await _dbContext.MeetingItems
-               .Include(q => q.Id)
+               .Include(q => q.Meeting)
                .ToListAsync();
 
             return meetingItems;

@@ -6,7 +6,8 @@ namespace ResolutionActionSystem.Persistence
 {
     public class ResolutionActionSystemDbContext : DbContext
     {
-        public ResolutionActionSystemDbContext(DbContextOptions<ResolutionActionSystemDbContext> options) : base(options)
+        public ResolutionActionSystemDbContext(DbContextOptions<ResolutionActionSystemDbContext> options)
+            : base(options)
         {
 
         }

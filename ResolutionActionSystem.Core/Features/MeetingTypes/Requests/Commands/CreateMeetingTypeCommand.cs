@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using ResolutionActionSystem.Application.DTOs.MeetingType;
+using ResolutionActionSystem.Application.Responses;
 
 namespace ResolutionActionSystem.Application.Features.MeetingTypes.Requests.Commands
 {
-    internal class CreateMeetingTypeCommand
+    public class CreateMeetingTypeCommand : IRequest<BaseCommandResponse>
     {
+        public CreateMeetingTypeDto CreateMeetingTypeDto { get; set; }
     }
 }

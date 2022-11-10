@@ -39,7 +39,7 @@ namespace ResolutionActionSystem.Application.Features.Meetings.Handlers.Commands
             {
                 responses.Success = true;
                 responses.Message = "Creation successful";
-                responses.Name = request.CreateMeetingDto.Description;
+                responses.Name = request.CreateMeetingDto.Identifier;
             }
             return responses;
         }

@@ -8,5 +8,6 @@ namespace ResolutionActionSystem.Application.DTOs.MeetingType
 {
     public class CreateMeetingTypeDto
     {
+        public string? Description { get; set; }
     }
 }

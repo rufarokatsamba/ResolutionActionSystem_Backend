@@ -2,7 +2,7 @@
 {
     public class CreateMeetingDto
     {
-        public string? Description { get; set; }
+        public string? Identifier { get; set; }
         public DateTime MeetingDateAndTime { get; set; }
         public int MeetingTypeId { get; set; }
     }
