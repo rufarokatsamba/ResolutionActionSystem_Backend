@@ -14,7 +14,7 @@ namespace ResolutionActionSystem.Domain.Entities
         public string? ItemComment { get; set; }
         public string? Action { get; set; }
         public string? Status { get; set; }
-        public bool? isClosed { get; set; }
+        public bool? IsClosed { get; set; }
         public Meeting Meeting { get; set; }
         public int MeetingId { get; set; }
     }

@@ -14,6 +14,7 @@ namespace ResolutionActionSystem.Application.Profiles
             #region ItemStatus
             CreateMap<ItemStatus, ItemStatusDto>().ReverseMap();
             CreateMap<ItemStatus, CreateItemStatusDto>().ReverseMap();
+            CreateMap<ItemStatus, ItemStatusListDto>().ReverseMap();
             #endregion
             #region Meeting
             CreateMap<Meeting, MeetingDto>().ReverseMap();

@@ -7,32 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\MeetingItem\Validators\" />
     <Folder Include="DTOs\MeetingType\Validators\" />
-    <Folder Include="DTOs\Meeting\Validators\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Features\ItemStatuses\Handlers\Commands\" />
-    <Folder Include="Features\ItemStatuses\Handlers\Queries\" />
     <Folder Include="Features\ItemStatuses\Requests\Commands\" />
-    <Folder Include="Features\ItemStatuses\Requests\Queries\" />
-    <Folder Include="Features\MeetingItems\Handlers\Commands\" />
-    <Folder Include="Features\MeetingItems\Handlers\Queries\" />
-    <Folder Include="Features\MeetingItems\Requests\Commands\" />
-    <Folder Include="Features\MeetingItems\Requests\Queries\" />
-    <Folder Include="Features\Meetings\Handlers\Commands\" />
-    <Folder Include="Features\Meetings\Handlers\Queries\" />
-    <Folder Include="Features\Meetings\Requests\Commands\" />
-    <Folder Include="Features\Meetings\Requests\Queries\" />
     <Folder Include="Features\MeetingTypes\Handlers\Commands\" />
-    <Folder Include="Features\MeetingTypes\Handlers\Queries\" />
-    <Folder Include="Features\MeetingTypes\Requests\Commands\" />
-    <Folder Include="Features\MeetingTypes\Requests\Queries\" />
-    <Folder Include="Responses\" />
     <Folder Include="Profiles\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>

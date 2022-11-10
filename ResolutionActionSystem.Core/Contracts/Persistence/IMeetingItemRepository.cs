@@ -9,5 +9,7 @@ namespace ResolutionActionSystem.Application.Contracts.Persistence
 {
     public interface IMeetingItemRepository: IGenericRepository<MeetingItem>
     {
+        Task<MeetingItem> GetMeetingItemWithDetail(int id);
+        Task<List<MeetingItem>> GetMeetingItemsWithDetail();
     }
 }

@@ -13,15 +13,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7F185CAC-41FB-47D6-AB50-152D839E7FFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionActionSystem.Domain", "ResolutionActionSystem.Domain\ResolutionActionSystem.Domain.csproj", "{62264036-3B47-4378-ACE9-7299DDBECF09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionActionSystem.Domain", "ResolutionActionSystem.Domain\ResolutionActionSystem.Domain.csproj", "{62264036-3B47-4378-ACE9-7299DDBECF09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionActionSystem.Application", "ResolutionActionSystem.Core\ResolutionActionSystem.Application.csproj", "{8C82A9E9-A36F-4C40-A114-75C1EF2E0B1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionActionSystem.Application", "ResolutionActionSystem.Core\ResolutionActionSystem.Application.csproj", "{8C82A9E9-A36F-4C40-A114-75C1EF2E0B1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionActionSystem.Api", "ResolutionActionSystem.Api\ResolutionActionSystem.Api.csproj", "{29FD0062-024F-4B4F-A103-DB9AC2E7D9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionActionSystem.Api", "ResolutionActionSystem.Api\ResolutionActionSystem.Api.csproj", "{29FD0062-024F-4B4F-A103-DB9AC2E7D9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionActionSystem.Persistence", "ResolutionActionSystem.Persistence\ResolutionActionSystem.Persistence.csproj", "{29129681-2D17-44AF-9EFB-17DCD57F0D2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionActionSystem.Persistence", "ResolutionActionSystem.Persistence\ResolutionActionSystem.Persistence.csproj", "{29129681-2D17-44AF-9EFB-17DCD57F0D2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionActionSystem.Test", "ResolutionActionSystem.Test\ResolutionActionSystem.Test.csproj", "{C1C9A19A-CA1A-436E-B6C8-B80B288523E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolutionActionSystem.Test", "ResolutionActionSystem.Test\ResolutionActionSystem.Test.csproj", "{C1C9A19A-CA1A-436E-B6C8-B80B288523E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{656973DE-4B9A-4F4D-A9FD-53CB1B6F5509}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
