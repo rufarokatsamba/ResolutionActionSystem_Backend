@@ -11,7 +11,7 @@ namespace ResolutionActionSystem.Application.Contracts.Persistence
         Task<T> GetAsync(int id);
         Task<IReadOnlyList<T>> GetAllAsync();
         Task UpdateAsync(T entity);
-        Task DeleteByIdAsync(int id);
+        Task DeleteAsync(T entity);
         Task<T> Add(T entity);
         Task<bool> Exists(int id);
     }
