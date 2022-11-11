@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using Moq;
 using ResolutionActionSystem.Application.Contracts.Persistence;
 using ResolutionActionSystem.Application.DTOs.MeetingType;
+using ResolutionActionSystem.Application.Exceptions;
 using ResolutionActionSystem.Application.Features.MeetingTypes.Handlers.Commands;
 using ResolutionActionSystem.Application.Features.MeetingTypes.Requests.Commands;
 using ResolutionActionSystem.Application.Profiles;
@@ -53,6 +53,21 @@ namespace ResolutionActionSystem.Test.MeetingTypes.Commands
 
             meetingTypes.Count.ShouldBe(4);
         }
-        
+
+        [Fact]
+        public async Task InValid_MeetingType_Created()
+        {
+            _createMeetingTypeDto.Description = "";
+
+            ValidationException ex = await Should.ThrowAsync<ValidationException>
+                ( async () =>
+                         await _handler.Handle(new CreateMeetingTypeCommand() { CreateMeetingTypeDto = _createMeetingTypeDto }, CancellationToken.None)
+                );
+            ex.ShouldNotBeNull();   
+
+            var meetingTypes = await _mockRepo.Object.GetAllAsync();
+
+            meetingTypes.Count.ShouldBe(4);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using MediatR;
 using ResolutionActionSystem.Application.Contracts.Persistence;
 using ResolutionActionSystem.Application.DTOs.MeetingItem.Validators;
+using ResolutionActionSystem.Application.Exceptions;
 using ResolutionActionSystem.Application.Features.MeetingItems.Requests.Commands;
 using ResolutionActionSystem.Application.Responses;
 using ResolutionActionSystem.Domain.Entities;
@@ -33,6 +34,7 @@ namespace ResolutionActionSystem.Application.Features.MeetingItems.Handlers.Comm
                 responses.Success = false;
                 responses.Message = "Creation failed";
                 responses.Error = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
+                throw new ValidationException(validationResult);
             }
             else
             {

@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using MediatR;
 using ResolutionActionSystem.Application.Contracts.Persistence;
-using ResolutionActionSystem.Application.DTOs.Meeting;
 using ResolutionActionSystem.Application.DTOs.Meeting.Validators;
+using ResolutionActionSystem.Application.Exceptions;
 using ResolutionActionSystem.Application.Features.Meetings.Requests.Commands;
 using ResolutionActionSystem.Application.Responses;
 using ResolutionActionSystem.Domain.Entities;
@@ -34,6 +33,7 @@ namespace ResolutionActionSystem.Application.Features.Meetings.Handlers.Commands
                 responses.Success = false;
                 responses.Message = "Creation failed";
                 responses.Error = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
+                throw new ValidationException(validationResult);
             }
             else
             {
