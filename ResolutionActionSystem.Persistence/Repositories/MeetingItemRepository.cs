@@ -12,6 +12,12 @@ namespace ResolutionActionSystem.Persistence.Repositories
             _dbContext = dbContext;
         }
 
+        public async Task AddMeetingItems(List<MeetingItem> meetingItems)
+        {
+            await _dbContext.AddRangeAsync(meetingItems);
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task<List<MeetingItem>> GetMeetingItemsWithDetail()
         {
             var meetingItems = await _dbContext.MeetingItems
