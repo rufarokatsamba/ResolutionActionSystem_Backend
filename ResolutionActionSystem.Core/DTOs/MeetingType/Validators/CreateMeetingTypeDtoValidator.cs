@@ -8,7 +8,8 @@ namespace ResolutionActionSystem.Application.DTOs.MeetingType.Validators
         {
             RuleFor(c => c.Description)
                 .NotEmpty().WithMessage("Meeting type name is required.")
-                .NotNull();
+                .NotNull().WithMessage("Meeting type name cannot be null.")
+                .MinimumLength(1).WithMessage("Meeting type name should be more descriptive.");
         }         
     }
 }
