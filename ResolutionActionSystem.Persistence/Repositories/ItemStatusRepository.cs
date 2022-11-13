@@ -20,7 +20,6 @@ namespace ResolutionActionSystem.Persistence.Repositories
         public async Task<List<ItemStatus>> GetItemStatusesWithDetail()
         {
             var itemStatuses = await _dbContext.ItemStatuses
-               .Include(q => q.Id)
                .ToListAsync();
 
             return itemStatuses;
@@ -29,8 +28,8 @@ namespace ResolutionActionSystem.Persistence.Repositories
         public async Task<ItemStatus> GetItemStatusWithDetail(int id)
         {
             var itemStatus = await _dbContext.ItemStatuses
-               .Include(q => q.Id)
-               .FirstOrDefaultAsync(q => q.Id == id);
+               .OrderByDescending(q => q.Id)
+                .FirstOrDefaultAsync(q => q.Id == id);
 
             return itemStatus;
         }

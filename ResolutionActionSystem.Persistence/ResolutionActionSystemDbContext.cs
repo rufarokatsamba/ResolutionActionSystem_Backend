@@ -4,7 +4,7 @@ using ResolutionActionSystem.Domain.Entities;
 
 namespace ResolutionActionSystem.Persistence
 {
-    public class ResolutionActionSystemDbContext : DbContext
+    public class ResolutionActionSystemDbContext : AuditableDbContext
     {
         public ResolutionActionSystemDbContext(DbContextOptions<ResolutionActionSystemDbContext> options)
             : base(options)
@@ -17,21 +17,21 @@ namespace ResolutionActionSystem.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ResolutionActionSystemDbContext).Assembly);
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            //audit logging
-            foreach (var entry in ChangeTracker.Entries<BaseDomainEntity>())
-            {
-                entry.Entity.LastModifiedDate = DateTime.Now;
+        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        //{
+        //    //audit logging
+        //    foreach (var entry in ChangeTracker.Entries<BaseDomainEntity>())
+        //    {
+        //        entry.Entity.LastModifiedDate = DateTime.Now;
 
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Entity.DateCreated = DateTime.Now;
-                }
-            }
+        //        if (entry.State == EntityState.Added)
+        //        {
+        //            entry.Entity.DateCreated = DateTime.Now;
+        //        }
+        //    }
 
-            return base.SaveChangesAsync(cancellationToken);
-        }
+        //    return base.SaveChangesAsync(cancellationToken);
+        //}
 
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<ItemStatus> ItemStatuses { get; set; }

@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using ResolutionActionSystem.Api.Middleware;
 using ResolutionActionSystem.Application;
+using ResolutionActionSystem.Identity;
 using ResolutionActionSystem.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,9 +21,14 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
+// Add services to the container.
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.ConfigureApplicationServices();
+builder.Services.ConfigureIdentityServices(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(o =>
 {

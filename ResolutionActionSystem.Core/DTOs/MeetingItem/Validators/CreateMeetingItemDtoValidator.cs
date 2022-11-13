@@ -10,7 +10,7 @@ namespace ResolutionActionSystem.Application.DTOs.MeetingItem.Validators
             RuleFor(c => c.PersonResponsible)
                 .NotEmpty().WithMessage("Person responsible is required.")
                 .NotNull();
-            RuleFor(c => c.Status)
+            RuleFor(c => c.StatusId)
                 .NotEmpty().WithMessage("Status is required.")
                 .NotNull();
             RuleFor(c => c.DueDate)

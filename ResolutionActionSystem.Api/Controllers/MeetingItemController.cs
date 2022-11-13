@@ -22,8 +22,8 @@ namespace ResolutionActionSystem.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<MeetingItemDto>>> GetAsync()
         {
-            var meetings = await _mediator.Send(new GetMeetingItemListRequest());
-            return Ok(meetings);
+            var meetingItems = await _mediator.Send(new GetMeetingItemListRequest());
+            return Ok(meetingItems);
         }
 
         // GET api/<MeetingItemController>/5
