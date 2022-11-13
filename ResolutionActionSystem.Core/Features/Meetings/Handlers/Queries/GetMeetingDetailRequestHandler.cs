@@ -10,15 +10,18 @@ namespace ResolutionActionSystem.Application.Features.Meetings.Handlers.Queries
     {
         private readonly IMeetingRepository _meetingRepository;
         private readonly IMapper _mapper;
-       public GetMeetingDetailRequestHandler(IMeetingRepository meetingRepository, IMapper mapper)
+        private readonly IMeetingTypeRepository _meetingTypeRepository;
+        public GetMeetingDetailRequestHandler(IMeetingRepository meetingRepository, IMapper mapper, IMeetingTypeRepository meetingTypeRepository)
         {
             _meetingRepository = meetingRepository;
             _mapper = mapper;
+            _meetingTypeRepository = meetingTypeRepository; 
         }
         public async Task<MeetingDto> Handle(GetMeetingDetailRequest request, CancellationToken cancellationToken)
         {
-            var meeting = await _meetingRepository.GetMeetingWithDetail(request.Id);
-            return _mapper.Map<MeetingDto>(meeting);
+            var meeting = _mapper.Map<MeetingDto>(await _meetingRepository.GetMeetingWithDetail(request.Id));
+            //meeting.MeetingType = await _meetingTypeRepository.GetAsync(meeting.MeetingTypeId);
+            return meeting;
         }
     }
 }

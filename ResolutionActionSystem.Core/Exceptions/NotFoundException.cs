@@ -12,5 +12,14 @@ namespace ResolutionActionSystem.Application.Exceptions
         {
 
         }
+        public NotFoundException(string message) : base(message)
+        {
+
+        }
+
+        public NotFoundException(string message, Exception exp) : base(message, exp)
+        {
+
+        }
     }
 }

@@ -37,6 +37,7 @@ namespace ResolutionActionSystem.Application.Features.ItemStatuses.Handlers.Comm
             }
             else
             {
+                responses.id = status.Id;
                 responses.Success = true;
                 responses.Message = "Creation successful";
                 responses.Name = request.CreateItemStatusDto.Description;

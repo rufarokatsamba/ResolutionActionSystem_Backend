@@ -6,6 +6,6 @@ namespace ResolutionActionSystem.Application.DTOs.ItemStatus
     public class ItemStatusDto: BaseDto
     {
         public string? Description { get; set; }
-        public List<MeetingItemDto> MeetingItems { get; set; }
+        //public List<MeetingItemDto> MeetingItems { get; set; }
     }
 }

@@ -26,9 +26,9 @@ namespace ResolutionActionSystem.Application.Features.MeetingItems.Handlers.Comm
             var validationResult = await validator.ValidateAsync(request.CreateMeetingItemDto);
 
 
-            var meeting = _mapper.Map<MeetingItem>(request.CreateMeetingItemDto);
+            var meetingItem = _mapper.Map<MeetingItem>(request.CreateMeetingItemDto);
 
-            meeting = await _meetingItemReposistory.Add(meeting);
+            meetingItem = await _meetingItemReposistory.Add(meetingItem);
             if (validationResult.IsValid == false)
             {
                 responses.Success = false;
@@ -38,6 +38,7 @@ namespace ResolutionActionSystem.Application.Features.MeetingItems.Handlers.Comm
             }
             else
             {
+                responses.id=meetingItem.Id;
                 responses.Success = true;
                 responses.Message = "Creation successful";
                 responses.Name = request.CreateMeetingItemDto.ItemComment;

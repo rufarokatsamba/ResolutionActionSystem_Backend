@@ -1,5 +1,7 @@
 ﻿using ResolutionActionSystem.Application.DTOs.Common;
+using ResolutionActionSystem.Application.DTOs.ItemStatus;
 using ResolutionActionSystem.Application.DTOs.Meeting;
+using ResolutionActionSystem.Application.DTOs.MeetingType;
 
 namespace ResolutionActionSystem.Application.DTOs.MeetingItem
 {
@@ -8,10 +10,10 @@ namespace ResolutionActionSystem.Application.DTOs.MeetingItem
         public DateTime DueDate { get; set; }
         public string? PersonResponsible { get; set; }
         public string? ItemComment { get; set; }
-        public string? Action { get; set; }
-        public string? Status { get; set; }
-        public bool? isClosed { get; set; }
-        public MeetingDto Meeting { get; set; }
+        public int StatusId { get; set; }
+        public ItemStatusDto Status { get; set; }
+        public bool? IsClosed { get; set; }
         public int MeetingId { get; set; }
+
     }
 }

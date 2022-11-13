@@ -9,5 +9,6 @@ namespace ResolutionActionSystem.Application.Contracts.Persistence
 {
     public interface IMeetingTypeRepository: IGenericRepository<MeetingType>
     {
+        Task<MeetingType> GetMeetingTypeWithDetail(int id);
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ResolutionActionSystem.Application.DTOs.ItemStatus;
+using ResolutionActionSystem.Application.DTOs.MeetingType;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +13,9 @@ namespace ResolutionActionSystem.Application.DTOs.MeetingItem
         public DateTime DueDate { get; set; }
         public string? PersonResponsible { get; set; }
         public string? ItemComment { get; set; }
-        public string? Action { get; set; }
-        public string? Status { get; set; }
-        public bool? isClosed { get; set; }
+        public int StatusId { get; set; }
+        public bool? IsClosed { get; set; }
         public int MeetingId { get; set; }
+
     }
 }

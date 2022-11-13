@@ -37,6 +37,7 @@ namespace ResolutionActionSystem.Application.Features.MeetingTypes.Handlers.Comm
             }
             else
             {
+                responses.id = meetingType.Id;
                 responses.Success = true;
                 responses.Message = "Creation successful";
                 responses.Name = request.CreateMeetingTypeDto.Description;

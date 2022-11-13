@@ -26,8 +26,15 @@ namespace ResolutionActionSystem.Application.Features.Meetings.Handlers.Commands
 
 
             var meeting = _mapper.Map<Meeting>(request.CreateMeetingDto);
-
-            meeting = await _meetingRepository.Add(meeting);
+            try
+            {
+                meeting = await _meetingRepository.Add(meeting);
+            }
+            catch (Exception ex)
+            {
+                responses.Message=ex.ToString();
+            }
+            
             if (validationResult.IsValid == false)
             {
                 responses.Success = false;
@@ -37,6 +44,7 @@ namespace ResolutionActionSystem.Application.Features.Meetings.Handlers.Commands
             }
             else
             {
+                responses.id=meeting.Id;
                 responses.Success = true;
                 responses.Message = "Creation successful";
                 responses.Name = request.CreateMeetingDto.Identifier;
