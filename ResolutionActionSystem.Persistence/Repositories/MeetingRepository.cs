@@ -22,7 +22,19 @@ namespace ResolutionActionSystem.Persistence.Repositories
             var meetings = await _dbContext.Meetings
                .Include(q => q.MeetingType)
                .Include(q => q.MeetingItems)
+               .ThenInclude(q => q.Status)
                .ToListAsync();
+
+            return meetings;
+        }
+        public async Task<List<Meeting>> GetMeetingByMeetingType(int id)
+        {
+            var meetings = await _dbContext.Meetings
+               .Where(q => q.MeetingTypeId == id)
+               .Include(q => q.MeetingType)
+               .ToListAsync();
+
+
 
             return meetings;
         }
@@ -31,8 +43,9 @@ namespace ResolutionActionSystem.Persistence.Repositories
         {
             var meeting = await _dbContext.Meetings
                 .OrderByDescending(q => q.Id)
-                .Include(q => q.MeetingItems)
                 .Include(q => q.MeetingType)
+                .Include(q => q.MeetingItems)
+                .ThenInclude(q => q.Status)
                 .FirstOrDefaultAsync(q => q.Id == id);
 
             return meeting;

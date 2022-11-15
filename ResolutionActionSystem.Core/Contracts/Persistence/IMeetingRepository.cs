@@ -11,5 +11,7 @@ namespace ResolutionActionSystem.Application.Contracts.Persistence
     {
         Task<Meeting> GetMeetingWithDetail(int id);
         Task<List<Meeting>> GetMeetingsWithDetail();
+
+        Task<List<Meeting>> GetMeetingByMeetingType(int id);
     }
 }
