@@ -21,3 +21,11 @@ This template pattern is designed for simple scenarios where you want an API to 
 | Programming language | Framework |
 | -------------------- | --------- |
 | [C#](/README.md)               | dotnet    |
+
+
+Features
+
+Open API(swaagerdoc) 
+Jwt Authentication
+MediatR
+xUnit
