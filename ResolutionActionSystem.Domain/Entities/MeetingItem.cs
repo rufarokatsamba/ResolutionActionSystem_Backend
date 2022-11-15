@@ -11,6 +11,7 @@ namespace ResolutionActionSystem.Domain.Entities
     {
         public DateTime DueDate { get; set; }
         public string? PersonResponsible { get; set; }
+        public string? meetingItem { get; set; }
         public string? ItemComment { get; set; }
         public ItemStatus Status { get; set; }
         public int StatusId { get; set; }

@@ -24,6 +24,12 @@ namespace ResolutionActionSystem.Application.Features.Meetings.Handlers.Commands
             var validator = new CreateMeetingDtoValidator();
             var validationResult = await validator.ValidateAsync(request.CreateMeetingDto);
 
+            var meetingTypeArray =  await _meetingRepository.GetMeetingByMeetingType(request.CreateMeetingDto.MeetingTypeId);
+
+            var meetingTypeArrayLength = meetingTypeArray.Count()+1;
+
+            request.CreateMeetingDto.Identifier = request.CreateMeetingDto.description + meetingTypeArrayLength;
+            
 
             var meeting = _mapper.Map<Meeting>(request.CreateMeetingDto);
             try
