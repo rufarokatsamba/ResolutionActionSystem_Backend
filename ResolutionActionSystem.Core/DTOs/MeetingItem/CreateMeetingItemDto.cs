@@ -17,6 +17,5 @@ namespace ResolutionActionSystem.Application.DTOs.MeetingItem
         public int StatusId { get; set; }
         public bool? IsClosed { get; set; }
         public int MeetingId { get; set; }
-
     }
 }

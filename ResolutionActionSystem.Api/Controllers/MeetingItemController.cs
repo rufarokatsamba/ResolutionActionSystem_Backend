@@ -36,13 +36,21 @@ namespace ResolutionActionSystem.Api.Controllers
 
         // POST api/<MeetingItemController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateMeetingItemDto MeetingItem)
+        public async Task<ActionResult> Post([FromBody] CreateMeetingItemDto[] MeetingItem)
         {
-            var command = new CreateMeetingItemCommand { CreateMeetingItemDto = MeetingItem };
-            var response = await _mediator.Send(command);
-            return Ok(response);
-        }
+            foreach (var item in MeetingItem)
+            {
+                var command = new CreateMeetingItemCommand { CreateMeetingItemDto = item };
+                var response = await _mediator.Send(command);
+               
+                if (item.Equals(MeetingItem.Last()))
+                {
+                    return Ok(response);
+                };
+            }
+            return Ok();
 
+        }
         // PUT api/<MeetingItemController>/5
         [HttpPut]
         [ProducesDefaultResponseType]
