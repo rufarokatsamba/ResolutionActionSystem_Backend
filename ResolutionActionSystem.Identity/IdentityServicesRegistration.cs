@@ -50,7 +50,7 @@ namespace ResolutionActionSystem.Identity
                 options.User.RequireUniqueEmail = true;
             });
 
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IAuthService, AuthService>(); //We can use this for lightweight, stateless services.Each time the service is called, the new instance is created
             services.AddTransient<IUserService, UserService>();
 
             services.AddAuthentication(options =>

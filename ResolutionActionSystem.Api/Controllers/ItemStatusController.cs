@@ -3,7 +3,6 @@ using MediatR;
 using ResolutionActionSystem.Application.DTOs.ItemStatus;
 using ResolutionActionSystem.Application.Features.ItemStatuses.Requests.Queries;
 using ResolutionActionSystem.Application.Features.ItemStatuses.Requests.Commands;
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ResolutionActionSystem.Api.Controllers
 {
@@ -12,10 +11,12 @@ namespace ResolutionActionSystem.Api.Controllers
     public class ItemStatusController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<ItemStatusController> _logger;
 
-        public ItemStatusController(IMediator mediator)
+        public ItemStatusController(IMediator mediator, ILogger<ItemStatusController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         // GET: api/<ItemStatusController>
         [HttpGet]
@@ -29,7 +30,12 @@ namespace ResolutionActionSystem.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemStatusListDto>> Get(int id)
         {
+            _logger.LogInformation($"getting status with id {id} not found");
             var status = await _mediator.Send(new GetItemStatusesDetailRequest { Id = id });
+            if (status == null)
+            {
+                _logger.LogWarning($"status with id {id} not found");
+            }
             return Ok(status);
         }
 

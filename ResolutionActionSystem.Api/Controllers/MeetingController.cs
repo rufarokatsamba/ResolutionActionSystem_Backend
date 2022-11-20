@@ -13,15 +13,22 @@ namespace ResolutionActionSystem.Api.Controllers
     public class MeetingController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public MeetingController(IMediator mediator)
+        private readonly ILogger<MeetingController> _logger;
+        public MeetingController(IMediator mediator, ILogger<MeetingController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         // GET: api/<MeetingController>
         [HttpGet]
         public async Task<ActionResult<List<MeetingDto>>> GetAsync()
         {
             var meetings = await _mediator.Send(new GetMeetingListRequest());
+
+            if (meetings == null)
+            {
+                _logger.LogWarning($"No meetings found");
+            }
             return Ok(meetings);
         }
 
@@ -29,7 +36,12 @@ namespace ResolutionActionSystem.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MeetingDto>> Get(int id)
         {
+            _logger.LogInformation($"getting meeting with id: {id}");
             var meeting = await _mediator.Send(new GetMeetingDetailRequest { Id = id });
+            if (meeting == null)
+            {
+                _logger.LogWarning($"meeting with id {id} not found");
+            }
             return Ok(meeting);
         }
 
