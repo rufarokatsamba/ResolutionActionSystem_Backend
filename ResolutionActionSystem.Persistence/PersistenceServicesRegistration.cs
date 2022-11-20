@@ -15,10 +15,10 @@ namespace ResolutionActionSystem.Persistence
             options.UseSqlServer(
                 configuration.GetConnectionString("ResolutionActionSystemConnectionString")));
 
-            services.AddScoped(typeof(GenericRepository<>), typeof(Repositories.GenericRepository<>));
+            services.AddScoped(typeof(GenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));//addscopped allows  services to be created once per request within the scope and gets used in other calls
+            //addscopped allows  services to be created once per request within the scope and gets used in other calls
             services.AddScoped<IMeetingItemRepository      , MeetingItemRepository>();
             services.AddScoped<IMeetingRepository          , MeetingRepository>();
             services.AddScoped<IItemStatusRepository       , ItemStatusRepository>();

@@ -13,9 +13,12 @@ namespace ResolutionActionSystem.Api.Controllers
     public class MeetingTypeController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public MeetingTypeController(IMediator mediator)
+        private readonly ILogger<MeetingTypeController> _logger;
+
+        public MeetingTypeController(IMediator mediator, ILogger<MeetingTypeController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         // GET: api/<MeetingTypeController>
         [HttpGet]
@@ -29,7 +32,12 @@ namespace ResolutionActionSystem.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MeetingTypeDto>> Get(int id)
         {
+            _logger.LogInformation($"getting meeting type with id: {id}");
             var meetingType = await _mediator.Send(new GetMeetingTypeDetailRequest { Id = id });
+            if (meetingType == null)
+            {
+                _logger.LogWarning($"meeting type with id: {id} not found");
+            }
             return Ok(meetingType);
         }
 

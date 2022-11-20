@@ -13,10 +13,12 @@ namespace ResolutionActionSystem.Api.Controllers
     public class MeetingItemController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ILogger<MeetingItemController> _logger;
 
-        public MeetingItemController(IMediator mediator)
+        public MeetingItemController(IMediator mediator, ILogger<MeetingItemController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
         // GET: api/<MeetingItemController>
         [HttpGet]
@@ -30,19 +32,32 @@ namespace ResolutionActionSystem.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MeetingItemDto>> Get(int id)
         {
-            var meeting = await _mediator.Send(new GetMeetingItemDetailRequest { Id = id });
-            return Ok(meeting);
+            _logger.LogInformation($"getting meeting item with id: {id}");
+            var meetingItem = await _mediator.Send(new GetMeetingItemDetailRequest { Id = id });
+            if (meetingItem == null)
+            {
+                _logger.LogDebug($"meetingItem with id {id} not found");
+            }
+            return Ok(meetingItem);
         }
 
         // POST api/<MeetingItemController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateMeetingItemDto MeetingItem)
+        public async Task<ActionResult> Post([FromBody] CreateMeetingItemDto[] MeetingItem)
         {
-            var command = new CreateMeetingItemCommand { CreateMeetingItemDto = MeetingItem };
-            var response = await _mediator.Send(command);
-            return Ok(response);
-        }
+            foreach (var item in MeetingItem)
+            {
+                var command = new CreateMeetingItemCommand { CreateMeetingItemDto = item };
+                var response = await _mediator.Send(command);
+               
+                if (item.Equals(MeetingItem.Last()))
+                {
+                    return Ok(response);
+                };
+            }
+            return Ok();
 
+        }
         // PUT api/<MeetingItemController>/5
         [HttpPut]
         [ProducesDefaultResponseType]
